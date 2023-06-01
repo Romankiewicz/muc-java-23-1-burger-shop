@@ -118,7 +118,7 @@ class BurgerShopServiceTest {
                 "French Fries",
                 "0,5L Softdrink");
 
-        burgerShopService.deleteMenu(expectedMenu);
+        burgerShopService.deleteMenu(expectedMenu.id());
         verify(menuRepository).deleteMenu(any());
     }
 

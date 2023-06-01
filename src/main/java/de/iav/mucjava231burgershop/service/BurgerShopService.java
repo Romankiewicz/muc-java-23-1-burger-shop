@@ -31,4 +31,8 @@ public class BurgerShopService {
     public Menu changeMenu(String idOfMenuToChange, Menu menuToChange) {
         return menuRepository.changeMenu(idOfMenuToChange, menuToChange);
     }
+
+    public void deleteMenu(String idOfMenuToDelete) {
+        menuRepository.deleteMenu(idOfMenuToDelete);
+    }
 }
