@@ -51,4 +51,12 @@ public class MenuRepository {
         throw new MenuNotFoundException(idOfMenuToChange);
     }
 
+    public void deleteMenu(String idOfMenuToDelete){
+        for (Menu menuToDelete : menus){
+            if (menuToDelete.id().equals(idOfMenuToDelete)){
+                menus.remove(menuToDelete);
+            }
+        }
+    }
+
 }
