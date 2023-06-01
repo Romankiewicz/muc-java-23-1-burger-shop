@@ -87,13 +87,25 @@ class BurgerShopServiceTest {
     @Test
     void changeMenu_whenRequestedIdExists_thenReturnChangedMenu(){
 
-        Menu expectedMenu = new Menu("2",
+        Menu expectedMenu = new Menu("1",
                 "Double Cheesburger Menu",
                 12.99,
                 "Double Cheesburger",
                 "French Fries",
                 "0,5L Softdrink");
 
+        Menu changedMenu = new Menu("2",
+                "Cheesburger Menu",
+                9.99,
+                "Cheesburger",
+                "Sweetpotato Fries",
+                "0,5L Softdrink");
+
+        when(menuRepository.changeMenu(expectedMenu.id(),changedMenu)).thenReturn(changedMenu);
+
+        Menu actualMenu = burgerShopService.changeMenu(expectedMenu.id(), changedMenu);
+
+        assertEquals(changedMenu, actualMenu);
     }
 
 }

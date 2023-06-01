@@ -18,4 +18,17 @@ public class BurgerShopService {
     public List<Menu> listMenus() {
         return menuRepository.menuList();
     }
+
+    public Menu getMenuById(String id) {
+        return menuRepository.getMenuById(id);
+    }
+
+    public void addMenu(Menu menuToAdd) {
+        menuRepository.addMenu(menuToAdd);
+    }
+
+
+    public Menu changeMenu(String idOfMenuToChange, Menu menuToChange) {
+        return menuRepository.changeMenu(idOfMenuToChange, menuToChange);
+    }
 }
