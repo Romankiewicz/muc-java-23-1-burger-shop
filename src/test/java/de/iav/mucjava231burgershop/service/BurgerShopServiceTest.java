@@ -23,7 +23,8 @@ class BurgerShopServiceTest {
         List<Menu> actualMenus = burgerShopService.listMenus();
 
         assertEquals(expectedMenus, actualMenus);
-        verify(menuRepository.menuList());
+        assertEquals(0, actualMenus.size());
+
     }
 
 }
