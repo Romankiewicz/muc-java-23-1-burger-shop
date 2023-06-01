@@ -27,4 +27,37 @@ class BurgerShopServiceTest {
 
     }
 
+    @Test
+
+    void getMenus_whenAtLeastOneMenuExists_thenReturnMenuList(){
+
+       Menu ecpectedMenu = new Menu("1", "Double Cheesburger Menu", 12.99, "Double Cheesburger", "French Fries", "0,5L Softdrink");
+       List<Menu> expectedMenus = new ArrayList<>();
+       expectedMenus.add(ecpectedMenu);
+
+       when(menuRepository.menuList()).thenReturn(expectedMenus);
+
+       List<Menu> actualMenus = burgerShopService.listMenus();
+
+       assertEquals(expectedMenus, actualMenus);
+       verify(menuRepository).menuList();
+
+    }
+
+    @Test
+    void getMenuById_whenRequestedIdExists_thenReturnMenuWithRequestedId(){
+
+        Menu ecpectedMenu = new Menu("1", "Double Cheesburger Menu", 12.99, "Double Cheesburger", "French Fries", "0,5L Softdrink");
+
+        when(menuRepository.getMenuById(ecpectedMenu.id())).thenReturn(ecpectedMenu);
+
+        Menu actualMenus = burgerShopService.getMenuById(ecpectedMenu.id());
+
+        assertEquals(ecpectedMenu, actualMenus);
+        verify(menuRepository).getMenuById(any());
+    }
+
+    @Test
+
+
 }
