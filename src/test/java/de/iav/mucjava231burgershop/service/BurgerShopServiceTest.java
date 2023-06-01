@@ -31,7 +31,13 @@ class BurgerShopServiceTest {
 
     void getMenus_whenAtLeastOneMenuExists_thenReturnMenuList(){
 
-       Menu ecpectedMenu = new Menu("1", "Double Cheesburger Menu", 12.99, "Double Cheesburger", "French Fries", "0,5L Softdrink");
+       Menu ecpectedMenu = new Menu("1",
+               "Double Cheesburger Menu",
+               12.99,
+               "Double Cheesburger",
+               "French Fries",
+               "0,5L Softdrink");
+
        List<Menu> expectedMenus = new ArrayList<>();
        expectedMenus.add(ecpectedMenu);
 
@@ -47,17 +53,47 @@ class BurgerShopServiceTest {
     @Test
     void getMenuById_whenRequestedIdExists_thenReturnMenuWithRequestedId(){
 
-        Menu ecpectedMenu = new Menu("1", "Double Cheesburger Menu", 12.99, "Double Cheesburger", "French Fries", "0,5L Softdrink");
+        Menu expectedMenu = new Menu("1",
+                "Double Cheesburger Menu",
+                12.99,
+                "Double Cheesburger",
+                "French Fries",
+                "0,5L Softdrink");
 
-        when(menuRepository.getMenuById(ecpectedMenu.id())).thenReturn(ecpectedMenu);
 
-        Menu actualMenus = burgerShopService.getMenuById(ecpectedMenu.id());
 
-        assertEquals(ecpectedMenu, actualMenus);
+        when(menuRepository.getMenuById(expectedMenu.id())).thenReturn(expectedMenu);
+
+        Menu actualMenu = burgerShopService.getMenuById(expectedMenu.id());
+
+        assertEquals(expectedMenu, actualMenu);
         verify(menuRepository).getMenuById(any());
     }
 
     @Test
+    void addMenu_whenMenuWasPlacedSuccessfully_thenVerifyMethodIsCalled() {
 
+        Menu expectedMenu = new Menu("2",
+                "Double Cheesburger Menu",
+                12.99,
+                "Double Cheesburger",
+                "French Fries",
+                "0,5L Softdrink");
+
+        burgerShopService.addMenu(expectedMenu);
+        verify(menuRepository).addMenu(any());
+    }
+
+    @Test
+    void changeMenu_whenRequestedIdExists_thenReturnChangedMenu(){
+
+        Menu expectedMenu = new Menu("2",
+                "Double Cheesburger Menu",
+                12.99,
+                "Double Cheesburger",
+                "French Fries",
+                "0,5L Softdrink");
+
+    }
 
 }
