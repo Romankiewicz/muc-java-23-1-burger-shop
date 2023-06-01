@@ -24,11 +24,31 @@ public class MenuRepository {
 
     public Menu getMenuById(String idOfRequestedMenu){
         for (Menu singleMenuFromList : menus){
-            if(singleMenuFromList.id().equals(idOfRequestedMenu)) {
+            if (singleMenuFromList.id().equals(idOfRequestedMenu)) {
                 return singleMenuFromList;
             }
         }
         throw new MenuNotFoundException(idOfRequestedMenu);
+    }
+
+    public void addMenu(Menu menuToAdd){
+        menus.add(menuToAdd);
+    }
+
+    public Menu changeMenu(String idOfMenuToChange, Menu menuToChange) {
+        Menu changedMenu = null;
+        for (Menu singleMenuFromList : menus) {
+            if (singleMenuFromList.id().equals(idOfMenuToChange)) {
+                changedMenu = new Menu(idOfMenuToChange,
+                        menuToChange.name(),
+                        menuToChange.price(),
+                        menuToChange.mainDish(),
+                        menuToChange.sideDish(),
+                        menuToChange.beverage());
+            }
+            return changedMenu;
+        }
+        throw new MenuNotFoundException(idOfMenuToChange);
     }
 
 }
