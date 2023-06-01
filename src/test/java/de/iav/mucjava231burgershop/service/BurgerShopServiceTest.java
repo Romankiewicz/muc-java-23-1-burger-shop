@@ -108,4 +108,18 @@ class BurgerShopServiceTest {
         assertEquals(changedMenu, actualMenu);
     }
 
+    @Test
+    void deleteMenu_whenMenuWasDeletedSuccessfully_thenVerifyMethodIsCalled(){
+
+        Menu expectedMenu = new Menu("2",
+                "Double Cheesburger Menu",
+                12.99,
+                "Double Cheesburger",
+                "French Fries",
+                "0,5L Softdrink");
+
+        burgerShopService.deleteMenu(expectedMenu);
+        verify(menuRepository).deleteMenu(any());
+    }
+
 }
