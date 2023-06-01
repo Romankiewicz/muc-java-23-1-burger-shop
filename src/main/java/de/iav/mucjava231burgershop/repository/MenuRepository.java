@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public class MenuRepository {
 
-    private List<Menu> menus;
+    private final List<Menu> menus;
 
     public MenuRepository(){
         menus = new ArrayList<>();
