@@ -81,7 +81,7 @@ class BurgerShopServiceTest {
                 "0,5L Softdrink");
 
         burgerShopService.addMenu(expectedMenu);
-        verify(menuRepository).addMenu(any());
+        verify(menuRepository).addMenu(expectedMenu);
     }
 
     @Test
