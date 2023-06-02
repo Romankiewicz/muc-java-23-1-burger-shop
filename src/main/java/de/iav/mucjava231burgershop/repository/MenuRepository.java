@@ -3,6 +3,7 @@ package de.iav.mucjava231burgershop.repository;
 import de.iav.mucjava231burgershop.exception.MenuNotFoundException;
 import de.iav.mucjava231burgershop.model.Menu;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,20 +36,23 @@ public class MenuRepository {
         menus.add(menuToAdd);
     }
 
-    public Menu changeMenu(String idOfMenuToChange, Menu menuToChange) {
-        Menu changedMenu = null;
+    public Menu changeMenu(String id, Menu menuToChange) {
+
         for (Menu singleMenuFromList : menus) {
-            if (singleMenuFromList.id().equals(idOfMenuToChange)) {
-                changedMenu = new Menu(idOfMenuToChange,
+            if (singleMenuFromList.id().equals(id)) {
+                menus.remove(singleMenuFromList);
+                Menu changedMenu = new Menu(id,
                         menuToChange.name(),
                         menuToChange.price(),
                         menuToChange.mainDish(),
                         menuToChange.sideDish(),
                         menuToChange.beverage());
+                        menus.add(changedMenu);
             }
-            return changedMenu;
+            return menuToChange;
+
         }
-        throw new MenuNotFoundException(idOfMenuToChange);
+        throw new MenuNotFoundException(id);
     }
 
     public void deleteMenu(String idOfMenuToDelete){

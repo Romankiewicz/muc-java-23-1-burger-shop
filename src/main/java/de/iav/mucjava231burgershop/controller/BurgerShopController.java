@@ -33,12 +33,12 @@ public class BurgerShopController {
     }
 
     @PutMapping("/{id}")
-    public Menu changeMenu(@PathVariable String idOfMenuToChange, @RequestBody Menu menuToChange){
-        return burgerShopService.changeMenu(idOfMenuToChange, menuToChange);
+    public Menu changeMenu(@PathVariable String id, @RequestBody Menu menuToChange){
+        return burgerShopService.changeMenu(id, menuToChange);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteMenu(@PathVariable String idOfMenuToDelete){
-        burgerShopService.deleteMenu(idOfMenuToDelete);
+    public void deleteMenu(@PathVariable String id){
+        burgerShopService.deleteMenu(id);
     }
 }
